@@ -3,8 +3,11 @@
 
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">PSX build date</string>
-
     <string name="build_date_default">2012-01-01-0000</string>
+    <!-- About device screen, Cpu info. -->
+    <string name="cpu_info">CPU</string>
+    <!-- About phone screen, Free memory info -->
+    <string name="mem_info">Memory</string>
 
     <string name="ok">OK</string>
 
@@ -80,5 +83,6 @@
    <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
     <string name="status_bar_toggle_info">Automatic brightness must be disabled</string>
+
 
 </resources>
