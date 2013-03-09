@@ -12,7 +12,11 @@
 -keep class com.android.settings.accounts.*
 -keep class com.android.settings.fuelgauge.*
 -keep class com.android.settings.users.*
+<<<<<<< HEAD
 -keep class com.android.settings.NotificationStation
+=======
+-keep class com.koushikdutta.**
+>>>>>>> 289006e... Switch to koush superuser
 
 # Keep click responders
 -keepclassmembers class com.android.settings.inputmethod.UserDictionaryAddWordActivity {
