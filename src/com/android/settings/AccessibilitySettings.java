@@ -116,7 +116,9 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             "enable_global_gesture_preference_screen";
     private static final String DISPLAY_MAGNIFICATION_PREFERENCE_SCREEN =
             "screen_magnification_preference_screen";
-
+    private static final String KEY_LOCKSCREEN_QUICK_UNLOCK_CONTROL = 
+	        "lockscreen_quick_unlock_control"; 
+			
     // Extras passed to sub-fragments.
     private static final String EXTRA_PREFERENCE_KEY = "preference_key";
     private static final String EXTRA_CHECKED = "checked";
@@ -180,7 +182,8 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private Preference mNoServicesMessagePreference;
     private PreferenceScreen mDisplayMagnificationPreferenceScreen;
     private PreferenceScreen mGlobalGesturePreferenceScreen;
-
+    private CheckBoxPreference mLockscreenQuickUnlockControl;
+	
     private int mLongPressTimeoutDefault;
 
     @Override
@@ -245,7 +248,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         } else if (mDisplayMagnificationPreferenceScreen == preference) {
             handleDisplayMagnificationPreferenceScreenClick();
             return true;
-        }
+        } else if (preference == mLockscreenQuickUnlockControl) {
+            Settings.System.putBoolean(getContentResolver(),
+                    Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL,
+                    mLockscreenQuickUnlockControl.isChecked());         
+		}
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -348,6 +355,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         // Global gesture.
         mGlobalGesturePreferenceScreen =
                 (PreferenceScreen) findPreference(ENABLE_ACCESSIBILITY_GESTURE_PREFERENCE_SCREEN);
+				
+        //Quick Unlock				
+        mLockscreenQuickUnlockControl = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_QUICK_UNLOCK_CONTROL);
+        mLockscreenQuickUnlockControl.setChecked(Settings.System.getBoolean(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, false)); 				
     }
 
     private void updateAllPreferences() {

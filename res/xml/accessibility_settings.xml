@@ -33,6 +33,11 @@
             android:title="@string/accessibility_screen_magnification_title"/>
 
         <CheckBoxPreference
+            android:key="lockscreen_quick_unlock_control"
+            android:title="@string/lockscreen_quick_unlock_control_title"
+            android:defaultValue="false" />   
+			
+        <CheckBoxPreference
                 android:key="toggle_large_text_preference"
                 android:title="@string/accessibility_toggle_large_text_preference_title"
                 android:persistent="false"/>
