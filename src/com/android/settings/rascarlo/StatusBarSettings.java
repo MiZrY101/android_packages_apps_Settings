@@ -56,10 +56,9 @@ OnPreferenceChangeListener {
         } catch (SettingNotFoundException e) {
         }
 
-        // don't show status bar brightnees and quick settings pull down control on tablet
+        // don't show status bar brightnees control on tablet
         if (Utils.isTablet(getActivity())) {
             getPreferenceScreen().removePreference(mStatusBarBrightnessControl);
-            getPreferenceScreen().removePreference(mQuickPulldown);
         }
 
         // status bar battery
