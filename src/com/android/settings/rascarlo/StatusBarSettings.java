@@ -1,6 +1,8 @@
 
 package com.android.settings.rascarlo;
 
+import android.content.Context; 
+import android.content.ContentResolver;  
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -10,6 +12,8 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.view.IWindowManager; 
+import android.telephony.TelephonyManager; 
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -21,10 +25,20 @@ OnPreferenceChangeListener {
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     private static final String STATUS_BAR_BATTERY = "status_bar_battery";
+    private static final String STATUS_BAR_CATEGORY_NOTIFICATIONS = "status_bar_notifications"; 
+    private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
+    private static final String KEY_MMS_BREATH = "mms_breath";  
 
     private ListPreference mQuickPulldown;
     private CheckBoxPreference mStatusBarBrightnessControl;
     private ListPreference mStatusBarBattery;
+    private PreferenceCategory mPrefCategoryNotifications; 
+    private CheckBoxPreference mMMSBreath;
+    private boolean mVoiceCapable;
+
+    CheckBoxPreference mMissedCallBreath;
+
+    Context mContext;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,7 +84,26 @@ OnPreferenceChangeListener {
         mStatusBarBattery.setValue(String.valueOf(statusBarBattery));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
-    }
+        mPrefCategoryNotifications = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_NOTIFICATIONS); 
+        }
+
+        // Determine if the device has voice capabilities
+        TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        mVoiceCapable = tm.getPhoneType() != TelephonyManager.PHONE_TYPE_NONE;
+
+        mMissedCallBreath = (CheckBoxPreference) findPreference(KEY_MISSED_CALL_BREATH);
+        mMMSBreath = (CheckBoxPreference) findPreference(KEY_MMS_BREATH); 
+
+        if (!mVoiceCapable) {
+            prefSet.removePreference(findPreference(KEY_MISSED_CALL_BREATH));
+            prefSet.removePreference(findPreference(KEY_MMS_BREATH));
+            prefSet.removePreference((PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_NOTIFICATIONS)); 
+        }
+
+        mMissedCallBreath.setOnPreferenceChangeListener(this);
+        mMMSBreath.setOnPreferenceChangeListener(this);
+
+     } 
 
     private void updatePulldownSummary(int value) {
         Resources res = getResources();
@@ -98,6 +131,14 @@ OnPreferenceChangeListener {
                     Settings.System.STATUS_BAR_BATTERY, statusBarBattery);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
             return true;
+        } else if (preference == mMissedCallBreath) {
+            Settings.System.putInt(getActivity().getContentResolver(), Settings.System.MISSED_CALL_BREATH,
+                    ((CheckBoxPreference)preference).isChecked() ? 0 : 1);
+            return true;
+        } else if (preference == mMMSBreath) {
+            Settings.System.putInt(getActivity().getContentResolver(), Settings.System.MMS_BREATH,
+                    ((CheckBoxPreference)preference).isChecked() ? 0 : 1);
+            return true; 
         }
         return false;
     }
