@@ -82,13 +82,4 @@
     <!-- Quick Settings -->
     <string name="quick_settings_title">Quick Settings</string> 
  
-    <!-- Notifications Category -->
-    <string name="status_bar_notifications_title">Notifications</string>
-
-    <!-- Breathing Notifications -->
-    <string name="missed_call_breath">Breathing Missed Call</string>
-    <string name="missed_call_breath_summary">Will give your missed call notifications a breathing effect on the statusbar.</string>
-    <string name="mms_breath">Breathing SMS</string>
-    <string name="mms_breath_summary">Will give your Mms notifications a breathing effect on the statusbar.</string>
-  
-</resources>
+    </resources>
