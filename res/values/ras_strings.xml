@@ -78,5 +78,8 @@
     <string name="navigation_bar_height_24">24dp</string>
     <string name="navigation_bar_height_20">20dp</string>
     <string name="navigation_bar_height_0">0dp (hide)</string>
-    
+
+    <!-- Quick Settings -->
+    <string name="quick_settings_title">Quick Settings</string> 
+ 
     </resources>
