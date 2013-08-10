@@ -18,10 +18,11 @@ package com.android.settings;
 
 import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 
-import android.app.AlertDialog;
+import android.app.AlertDialog; 
 import java.util.ArrayList;
 import android.app.ActivityManagerNative;
 import android.app.Dialog;
+import android.app.DialogFragment; 
 import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -48,6 +49,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.EditText;  
 
+import com.android.settings.R;
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
 
@@ -127,6 +129,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
         mNotificationPulse = (CheckBoxPreference) findPreference(KEY_NOTIFICATION_PULSE);
+	mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
+        updateCustomLabelTextSummary();
+
         if (mNotificationPulse != null
                 && getResources().getBoolean(
                         com.android.internal.R.bool.config_intrusiveNotificationLed) == false) {
@@ -151,9 +156,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mWifiDisplayPreference = null;
         }
     }
-
-	mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
-        updateCustomLabelTextSummary();
 
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
         ListPreference preference = mScreenTimeoutPreference;
