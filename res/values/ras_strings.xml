@@ -89,6 +89,6 @@
     <string name="ok">Ok</string>
 
     <!-- Quick Unlock Pin -->
-    <string name="lockscreen_quick_unlock_control_title">Lockscreen schnell entsperren</string> 
+    <string name="lockscreen_quick_unlock_control_title">Lockscreen quick unlock</string> 
 
 </resources>
