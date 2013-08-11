@@ -26,8 +26,8 @@
     <!-- Settings main menu category heading -->
     <string name="header_category_interface">PSX</string>
     <!-- System Interface settings  -->
-    <string name="system_settings_title">Build Tweaks</string>
-    <string name="system_interface_title">Build Tweaks</string>
+    <string name="system_settings_title">PSXtras</string>
+    <string name="system_interface_title">PSXtras</string>
     
     <!-- Volume rocker behaviours -->
     <string name="volume_rocker_category_title">Volume rocker</string>
