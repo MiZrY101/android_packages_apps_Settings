@@ -54,6 +54,8 @@
     <string name="status_bar_style_icon">Icon</string>
     <string name="status_bar_style_hidden">Hidden</string>
     <string name="status_bar_battery_status_percentage">Icon &amp; Percentage</string>
+    <string name="status_bar_battery_status_circle">Circle</string>
+    <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string> 
 
     <!-- Navigation Bar -->
     <string name="navigation_bar_title">Navigation bar</string>
