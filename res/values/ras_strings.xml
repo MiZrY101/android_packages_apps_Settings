@@ -156,4 +156,15 @@
     <string name="navring_action_torch">Toggle torch</string>
     <string name="navring_action_google_now">Google Now</string>
     <string name="navring_choose_action_title">Choose action</string> 
+
+    <!-- CRT animations -->
+    <string name="system_power_crt_screen_off_title">CRT screen off</string>
+    <string name="system_power_crt_screen_off_summary">Screen will animate an Electron Beam when turned off</string>
+    <string name="system_power_crt_mode_title">CRT animation mode</string>
+    <string name="system_power_crt_mode_dialog_title">Show CRT animation</string>
+    <string name="system_power_crt_mode_horizontal">Portrait horizontal</string>
+    <string name="system_power_crt_mode_vertical">Portrait vertical</string>
+    <string name="system_power_crt_mode_both">Orientation dependent</string>
+    <string name="display_category_animation_options_title">Animation</string>
+ 
 </resources>
