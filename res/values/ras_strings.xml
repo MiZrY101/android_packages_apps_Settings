@@ -39,11 +39,11 @@
     <string name="volume_key_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
     <!-- Volume rocker wake -->
-    <string name="pref_volume_wake_title">Volume Wake</string>
+    <string name="pref_volume_wake_title">Volume wake</string>
     <string name="pref_volume_wake_summary">Pressing the volume keys will wake your Nexus</string>
 
     <!-- Volume rocker music control -->
-    <string name="volbtn_music_controls_title">Volume Key Media Controls</string>
+    <string name="volbtn_music_controls_title">Volume key media controls</string>
     <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume keys will seek music tracks</string>
 
     <!-- Status bar  -->
