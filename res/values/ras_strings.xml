@@ -18,7 +18,7 @@
     <string name="volume_ring_only_description">Ringtone</string>
 
     <!-- kill app long press back -->
-    <string name="kill_app_longpress_back">Kill app back button</string>
+    <string name="kill_app_longpress_back">Long press to kill</string>
     <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
     
     <!-- BUILD TWEAKS  -->
@@ -30,7 +30,7 @@
     <string name="system_interface_title">PSXtras</string>
     
     <!-- Volume rocker behaviours -->
-    <string name="volume_rocker_category_title">Volume key</string>
+    <string name="volume_rocker_category_title">Volume Key</string>
     
      <!--- Volume key cursor control -->
     <string name="volume_key_cursor_control_title">Volume key cursor control</string>
@@ -39,26 +39,26 @@
     <string name="volume_key_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
     <!-- Volume rocker wake -->
-    <string name="pref_volume_wake_title">Volume rocker wake</string>
-    <string name="pref_volume_wake_summary">Pressing the volume rocker will wake your Nexus</string>
+    <string name="pref_volume_wake_title">Volume Wake</string>
+    <string name="pref_volume_wake_summary">Pressing the volume keys will wake your Nexus</string>
 
     <!-- Volume rocker music control -->
-    <string name="volbtn_music_controls_title">Volume rocker music controls</string>
-    <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume rockers will seek music tracks</string>
+    <string name="volbtn_music_controls_title">Volume Key Media Controls</string>
+    <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume keys will seek music tracks</string>
 
     <!-- Status bar  -->
-    <string name="status_bar_title">Status bar</string>
+    <string name="status_bar_title">Status Bar</string>
     
     <!-- Status bar battery -->
-    <string name="status_bar_battery_title">Battery status style</string>
+    <string name="status_bar_battery_title">Battery style</string>
     <string name="status_bar_style_icon">Icon</string>
     <string name="status_bar_style_hidden">Hidden</string>
-    <string name="status_bar_battery_status_percentage">Icon &amp; Percentage</string>
+    <string name="status_bar_battery_status_percentage">Icon with Percentage</string>
     <string name="status_bar_battery_status_circle">Circle</string>
-    <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string> 
+    <string name="status_bar_battery_status_circle_percentage">Circle with Percentage</string> 
 
     <!-- Navigation Bar -->
-    <string name="navigation_bar_title">Navigation bar</string>
+    <string name="navigation_bar_title">Navigation Bar</string>
     <string name="navigation_bar_buttons_customization">Navigation bar buttons</string>
     <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
     <string name="navigation_bar_tips">&#8226; Actions can only be assigned to one button at a time\n\n&#8226; The home button cannot be re-assigned\n\n&#8226; Side buttons cannot be rearranged</string>
@@ -82,7 +82,7 @@
     <string name="navigation_bar_height_0">0dp (hide)</string>
 
     <!-- Quick Settings -->
-    <string name="quick_settings_title">Quick Settings</string> 
+    <string name="quick_settings_title">Quick settings</string> 
      
     <!-- Custom Carrier Text -->
     <string name="custom_carrier_label_title">Custom carrier label</string>
@@ -90,11 +90,11 @@
     <string name="custom_carrier_label_notset">Custom label currently not set</string>   
 
     <!-- Quick Unlock Pin -->
-    <string name="lockscreen_quick_unlock_control_title">Lockscreen quick unlock</string> 
+    <string name="lockscreen_quick_unlock_control_title">Quick pin unlock</string> 
 
     <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Drag the slider to targets to assign shortcuts</string>
-    <string name="lockscreen_target_title">Lock screen targets</string>
+    <string name="lockscreen_target_title">Lock Screen Targets</string>
     <string name="lockscreen_target_summary">View or change custom lock screen shortcuts</string>
     <string name="lockscreen_target_reset">Lock screen shortcuts reset to default</string>
     <string name="lockscreen_target_save">Lock screen shortcuts saved</string>
@@ -141,7 +141,7 @@
     <string name="icon_picker_pack_title">Icon pack</string>
      
     <!-- Navigation ring shortcuts -->
-    <string name="navigation_ring_title">Quick launch shortcuts</string>
+    <string name="navigation_ring_title">Quick launch</string>
     <string name="navring_target_reset_message">Delete all user created navigation bar shortcuts and restore to default?</string>
     <string name="navring_target_reset">Quick launch shortcuts reset to default</string>
     <string name="navring_target_save">Quick launch shortcuts saved</string>
@@ -158,7 +158,7 @@
     <string name="navring_choose_action_title">Choose action</string> 
 
     <!-- CRT animations -->
-    <string name="system_power_crt_screen_off_title">CRT screen off</string>
+    <string name="system_power_crt_screen_off_title">CRT animation</string>
     <string name="system_power_crt_screen_off_summary">Screen will animate an Electron Beam when turned off</string>
     <string name="system_power_crt_mode_title">CRT animation mode</string>
     <string name="system_power_crt_mode_dialog_title">Show CRT animation</string>
@@ -166,5 +166,12 @@
     <string name="system_power_crt_mode_vertical">Portrait vertical</string>
     <string name="system_power_crt_mode_both">Orientation dependent</string>
     <string name="display_category_animation_options_title">Animation</string>
+
+    <!--  User Interface -->
+    <string name="user_interface_category_title">UI Options</string>
+
+    <!-- Turn on display when power connected; turn off display when power disconnected -->
+    <string name="wake_when_plugged_or_unplugged_title">Display wake</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting the charger</string>
  
 </resources>
