@@ -167,11 +167,4 @@
     <string name="system_power_crt_mode_both">Orientation dependent</string>
     <string name="display_category_animation_options_title">Animation</string>
 
-    <!--  User Interface -->
-    <string name="user_interface_category_title">UI Options</string>
-
-    <!-- Turn on display when power connected; turn off display when power disconnected -->
-    <string name="wake_when_plugged_or_unplugged_title">Display wake</string>
-    <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting the charger</string>
- 
 </resources>
