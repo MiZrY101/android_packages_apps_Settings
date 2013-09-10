@@ -38,6 +38,12 @@
             android:summary="@string/volume_adjust_sounds_enable_summary"
             android:persistent="false" />
 
+    <CheckBoxPreference
+            android:key="safe_headset_volume"
+            android:title="@string/safe_headset_volume_title"
+            android:summary="@string/safe_headset_volume_summary"
+            android:defaultValue="true" />
+
     <Preference
             android:key="musicfx"
             android:title="@string/musicfx_title">
