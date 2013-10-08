@@ -219,5 +219,10 @@
 
     <!-- Add application dialog box title -->
     <string name="profile_choose_app">Choose application</string>
- 
+
+    <!-- Color Picker -->
+    <string name="dialog_indicator_color_title">Select color</string>
+
+    <string name="dialog_delete_title">Delete</string>
+    <string name="profiles_add">Add</string>
 </resources>
