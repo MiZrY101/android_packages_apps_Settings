@@ -18,24 +18,16 @@
 package com.android.settings.notificationlight;
 
 import java.util.ArrayList;
-import java.util.IllegalFormatException;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -45,13 +37,11 @@ import com.android.settings.R;
 import com.android.settings.notificationlight.ColorPickerView.OnColorChangedListener;
 
 public class LightSettingsDialog extends AlertDialog implements
-        ColorPickerView.OnColorChangedListener, TextWatcher, OnFocusChangeListener {
-
-    private final static String HEX_CODE_BASE = "#FF";
+        ColorPickerView.OnColorChangedListener {
 
     private ColorPickerView mColorPicker;
 
-    private EditText mHexColorInput;
+    private ColorPanelView mOldColor;
     private ColorPanelView mNewColor;
     private Spinner mPulseSpeedOn;
     private Spinner mPulseSpeedOff;
@@ -106,13 +96,17 @@ public class LightSettingsDialog extends AlertDialog implements
         View layout = mInflater.inflate(R.layout.dialog_light_settings, null);
 
         mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
-        mHexColorInput = (EditText) layout.findViewById(R.id.hex_color_input);
-        mNewColor = (ColorPanelView) layout.findViewById(R.id.color_panel);
+        mOldColor = (ColorPanelView) layout.findViewById(R.id.old_color_panel);
+        mNewColor = (ColorPanelView) layout.findViewById(R.id.new_color_panel);
+
+        ((LinearLayout) mOldColor.getParent()).setPadding(Math
+                .round(mColorPicker.getDrawingOffset()), 0, Math
+                .round(mColorPicker.getDrawingOffset()), 0);
 
         mColorPicker.setOnColorChangedListener(this);
+        mOldColor.setColor(color);
         mColorPicker.setColor(color, true);
 
-        mHexColorInput.setOnFocusChangeListener(this);
         mPulseSpeedOn = (Spinner) layout.findViewById(R.id.on_spinner);
         PulseSpeedAdapter pulseSpeedAdapter = new PulseSpeedAdapter(
                 R.array.notification_pulse_length_entries,
@@ -151,7 +145,7 @@ public class LightSettingsDialog extends AlertDialog implements
     @Override
     public void onColorChanged(int color) {
         mNewColor.setColor(color);
-        mHexColorInput.setText(Integer.toHexString(color));
+
         if (mListener != null) {
             mListener.onColorChanged(color);
         }
@@ -165,12 +159,10 @@ public class LightSettingsDialog extends AlertDialog implements
         return mColorPicker.getColor();
     }
 
-    @SuppressWarnings("unchecked")
     public int getPulseSpeedOn() {
         return ((Pair<String, Integer>) mPulseSpeedOn.getSelectedItem()).second;
     }
 
-    @SuppressWarnings("unchecked")
     public int getPulseSpeedOff() {
         // return 0 if 'Always on' is selected
         return getPulseSpeedOn() == 1 ? 0 : ((Pair<String, Integer>) mPulseSpeedOff.getSelectedItem()).second;
@@ -254,43 +246,6 @@ public class LightSettingsDialog extends AlertDialog implements
             ((TextView) view.findViewById(R.id.textViewName)).setText(entry.first);
 
             return view;
-        }
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        String hexColor = mHexColorInput.getText().toString();
-        if (!hexColor.isEmpty()) {
-            try {
-                int color = Color.parseColor(HEX_CODE_BASE + hexColor);
-                mColorPicker.setColor(color);
-                mNewColor.setColor(color);
-                if (mListener != null) {
-                    mListener.onColorChanged(color);
-                }
-            } catch (IllegalArgumentException ex) {
-                // Number format is incorrect, ignore
-            }
-        }
-    }
-
-    @Override
-    public void onFocusChange(View v, boolean hasFocus) {
-        if (!hasFocus) {
-            mHexColorInput.removeTextChangedListener(this);
-            InputMethodManager inputMethodManager = (InputMethodManager) getContext()
-                    .getSystemService(Activity.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
-        } else {
-            mHexColorInput.addTextChangedListener(this);
         }
     }
 }
