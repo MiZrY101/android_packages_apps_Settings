@@ -1259,8 +1259,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeForceRtlOptions();
         } else if (preference == mWifiDisplayCertification) {
             writeWifiDisplayCertificationOptions();
-        } else {
-            return super.onPreferenceTreeClick(preferenceScreen, preference);
         } else if (preference == mKillAppLongpressBack) {
             writeKillAppLongpressBackOptions();
         }
