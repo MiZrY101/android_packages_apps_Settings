@@ -8,6 +8,14 @@
 
     <string name="ok">OK</string>
 
+
+    <!-- BUILD TWEAKS  -->
+    <!-- Settings main menu category heading -->
+    <string name="header_category_interface">RASTAKAT</string>
+    <!-- System Interface settings  -->
+    <string name="system_settings_title">Xtra Settings</string>
+    <string name="system_interface_title">Interface</string>
+
     <!-- Display settings screen, notification light settings -->
     <string name="display_category_light_options_title">Light options</string>
     <string name="notification_light_general_title">General</string>
