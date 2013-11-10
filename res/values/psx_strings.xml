@@ -14,7 +14,7 @@
 
     <!-- BUILD TWEAKS  -->
     <!-- Settings main menu category heading -->
-    <string name="header_category_interface">RASTAKAT</string>
+    <string name="header_category_interface">PureSpeedX</string>
     <!-- System Interface settings  -->
     <string name="system_settings_title">Xtra Settings</string>
     <string name="system_interface_title">Interface</string>
