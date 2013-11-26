@@ -510,6 +510,14 @@
     <!-- time range preference -->
     <string name="start_time_title">Start</string>
     <string name="end_time_title">End</string>
+
+    <!-- clear recents location -->
+    <string name="psx_clear_recents_category">Clear recents button</string>
+    <string name="psx_clear_recents_location">Button location</string>
+    <string name="crl_bottom_right">bottom right</string>
+	<string name="crl_top_right">top right</string>
+    <string name="crl_bottom_left">bottom left</string>
+	<string name="crl_top_left">top left</string>
 	
     <!-- Halo -->
     <string name="halo_settings_title">Halo</string>

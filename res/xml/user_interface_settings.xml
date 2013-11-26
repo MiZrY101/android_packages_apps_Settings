@@ -98,5 +98,16 @@
             android:summaryOff="@string/immersive_mode_off" />    
 
     </PreferenceCategory>
-	
+
+    <PreferenceCategory
+       android:title="@string/psx_clear_recents_category" >
+
+       <ListPreference
+            android:key="clear_recents_button_location"
+            android:title="@string/psx_clear_recents_location"
+            android:entries="@array/clear_recents_location_entries"
+            android:entryValues="@array/clear_recents_location_values"/>
+
+    </PreferenceCategory>
+			
 </PreferenceScreen>

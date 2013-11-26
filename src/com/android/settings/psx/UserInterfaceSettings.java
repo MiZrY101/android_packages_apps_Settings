@@ -35,6 +35,7 @@ public class UserInterfaceSettings extends SettingsPreferenceFragment implements
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
     private static final String KEY_IMMERSIVE_MODE_STYLE = "immersive_mode_style";
     private static final String KEY_IMMERSIVE_MODE_STATE = "immersive_mode_state";
+	private static final String KEY_CLEAR_RECENTS_BUTTON_LOCATION = "clear_recents_button_location";
 
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
@@ -48,6 +49,7 @@ public class UserInterfaceSettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mDisplayRotationPreference;
     private ListPreference mImmersiveModePref;
     private CheckBoxPreference mImmersiveModeState;
+    private ListPreference mClearRecentsLocation;
 	
     private ContentObserver mAccelerometerRotationObserver = 
             new ContentObserver(new Handler()) {
@@ -122,6 +124,12 @@ public class UserInterfaceSettings extends SettingsPreferenceFragment implements
         mImmersiveModePref.setValue(String.valueOf(immersiveModeValue));
         updateImmersiveModeState(immersiveModeValue);
         updateImmersiveModeSummary(immersiveModeValue);
+		
+        mClearRecentsLocation = (ListPreference) prefSet.findPreference(KEY_CLEAR_RECENTS_BUTTON_LOCATION);
+        mClearRecentsLocation.setOnPreferenceChangeListener(this);
+        int LocationValue = Settings.System.getInt(getContentResolver(), Settings.System.CLEAR_ALL_LAYOUT, 0);
+        mClearRecentsLocation.setValue(String.valueOf(LocationValue));
+        updateClearRecentsLocation(LocationValue);
     }
     
     private void updateImmersiveModeState(int value) {
@@ -172,6 +180,12 @@ public class UserInterfaceSettings extends SettingsPreferenceFragment implements
                     Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE, immersiveModeValue);
              updateImmersiveModeSummary(immersiveModeValue);
              updateImmersiveModeState(immersiveModeValue);
+             return true;
+        } else if (preference == mClearRecentsLocation) {
+            int CrlValue = Integer.valueOf((String) objValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.CLEAR_ALL_LAYOUT, CrlValue);
+             updateClearRecentsLocation(CrlValue);
              return true;
         } else if (preference == mImmersiveModeState) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -252,5 +266,19 @@ public class UserInterfaceSettings extends SettingsPreferenceFragment implements
             String statusBarPresent = res.getString(R.string.immersive_mode_summary_no_status_bar);
             mImmersiveModePref.setSummary(res.getString(R.string.summary_immersive_mode, statusBarPresent));
         }
+    }
+
+    private void updateClearRecentsLocation(int value) {
+        Resources res = getResources();
+        if (value == 1) {
+            mClearRecentsLocation.setSummary(res.getString(R.string.crl_top_right));
+        } else if (value == 2) {
+            mClearRecentsLocation.setSummary(res.getString(R.string.crl_bottom_left));
+        } else if (value == 3) {
+            mClearRecentsLocation.setSummary(res.getString(R.string.crl_top_left));
+		} else {
+            mClearRecentsLocation.setSummary(res.getString(R.string.crl_bottom_right));
+        }
     }	
+
 }
