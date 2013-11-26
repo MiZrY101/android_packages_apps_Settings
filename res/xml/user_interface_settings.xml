@@ -32,6 +32,11 @@
                 android:title="@string/display_rotation_title" />
 
     <PreferenceScreen
+        android:key="halo_settings"	
+	android:fragment="com.android.settings.psx.Halo"	
+	android:title="@string/halo_settings_title" />
+
+    <PreferenceScreen
         android:key="quiet_hours_settings"
         android:fragment="com.android.settings.psx.QuietHours"
         android:title="@string/quiet_hours_title" />		
