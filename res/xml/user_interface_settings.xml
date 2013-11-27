@@ -71,17 +71,6 @@
             android:fragment="com.android.settings.slim.notificationlight.NotificationLightSettings" />
 
     </PreferenceCategory>
-
-	<!-- Input -->
-    <PreferenceCategory
-        android:key="category_keyboard_options"
-        android:title="@string/psx_category_extended_input" >
-		
-	    <PreferenceScreen
-        android:key="keyboard_input_settings"
-        android:fragment="com.android.settings.slim.InputMethodsSettings"
-        android:title="@string/title_keyboard_input" />
-    </PreferenceCategory>
     
     <PreferenceCategory
        android:title="@string/psx_category_immersive_mode" >

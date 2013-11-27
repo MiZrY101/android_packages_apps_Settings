@@ -44,14 +44,6 @@
             android:key="volbtn_music_controls"
             android:title="@string/volbtn_music_controls_title"
             android:summary="@string/volbtn_music_controls_summary" />
-
-        <ListPreference
-            android:key="volume_key_cursor_control"
-            android:persistent="false"
-            android:dialogTitle="@string/volume_key_cursor_control_title"
-            android:title="@string/volume_key_cursor_control_title"
-            android:entries="@array/volume_key_cursor_control_entries"
-            android:entryValues="@array/volume_key_cursor_control_values" />
 			
     </PreferenceCategory>		
 		

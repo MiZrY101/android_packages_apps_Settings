@@ -25,12 +25,10 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements OnPre
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
-    private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
     private CheckBoxPreference mVolumeWake;
     private CheckBoxPreference mVolumeAdustSound;
     private CheckBoxPreference mVolBtnMusicCtrl;
-    private ListPreference mVolumeKeyCursorControl;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,16 +51,7 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements OnPre
 
 		mVolBtnMusicCtrl = (CheckBoxPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
         mVolBtnMusicCtrl.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.VOLUME_MUSIC_CONTROLS, 1) != 0);
-
-        mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
-        if(mVolumeKeyCursorControl != null) {
-            mVolumeKeyCursorControl.setValue(Integer.toString(Settings.System.getInt(
-                    getContentResolver(), Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0)));
-            mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
-            mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
-        }
-				
+                Settings.System.VOLUME_MUSIC_CONTROLS, 1) != 0);				
 	}
 
 
@@ -86,15 +75,6 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements OnPre
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mVolumeKeyCursorControl) {
-            String volumeKeyCursorControl = (String) objValue;
-            int val = Integer.parseInt(volumeKeyCursorControl);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.VOLUME_KEY_CURSOR_CONTROL, val);
-            int index = mVolumeKeyCursorControl.findIndexOfValue(volumeKeyCursorControl);
-            mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntries()[index]);
-            return true;
-        }
         // TODO Auto-generated method stub
         return false;
     }
